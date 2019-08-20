@@ -1,0 +1,6 @@
+com\example\demo\Person.class
+com\example\demo\ForgotPwdService.class
+com\example\demo\ForgotpasswordApplication.class
+com\example\demo\model\CustomPasswordEncoder.class
+com\example\demo\config\ForgotpasswordConfig.class
+com\example\demo\PersonDAO.class
