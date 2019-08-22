@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 
-	import org.apache.tomcat.jni.PasswordCallback;
+
 	import org.springframework.security.crypto.bcrypt.BCrypt;
 	import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -17,7 +17,7 @@ package com.example.demo.model;
 	    
 	    @Override
 	    public String encode(CharSequence rawPassword) {
-	        // TODO Auto-generated method stub
+	       
 	        return null;
 	    }
 
@@ -25,7 +25,7 @@ package com.example.demo.model;
 
 	    @Override
 	    public boolean matches(CharSequence rawPassword, String encodedPassword) {
-	        // TODO Auto-generated method stub
+	       
 	        return BCrypt.checkpw(rawPassword.toString(), encodedPassword);
 	    }
 

@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
-import java.io.Serializable;
-import java.math.BigInteger;
+
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,14 +17,14 @@ import lombok.Data;
 @Entity
 @Table(name = "password_history")
 @Component
-public class PasswordHistory  implements Serializable {
+public class PasswordHistory   {
 	
 
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO )
 	@Column(name = "pass_id")
-	private long  pass_id;
+	private long  passId;
 	@Column(name = "password1")
 	private String password1 ;
 	@Column(name = "password2")

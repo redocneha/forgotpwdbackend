@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.math.BigInteger;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -30,19 +30,19 @@ public class Register {
 	@Transient
 	private Date date = new Date();
 	@Column(name = "account_creation_time")
-	Timestamp account_creation_time = new Timestamp(date.getTime());
+	Timestamp accountCreationTime = new Timestamp(date.getTime());
 	@Column(name = "email_confirmation_flag")
-	private boolean email_confirmation_flag;
+	private boolean emailConfirmationFlag;
 	@Column(name = "emailid")
 	 private String emailid;
 	@Column(name = "first_name")
-	private  String first_name;
+	private  String firstName;
 	@Column(name = "last_name")
-	private String last_name ;
+	private String lastName ;
 	@Column(name = "phoneno")
-	private String phone_no ;
+	private String phoneNo ;
 	@Column(name = "userrole")
-	private String user_role ;
+	private String userRole ;
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private PasswordHistory pwdhistory;
 	

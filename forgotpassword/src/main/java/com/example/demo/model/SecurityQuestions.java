@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
-import java.io.Serializable;
-import java.math.BigInteger;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +16,7 @@ import lombok.Data;
 @Entity
 @Table(name="security_questions")
 @Component
-public class SecurityQuestions implements Serializable {
+public class SecurityQuestions {
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)

@@ -2,30 +2,22 @@ package com.example.demo;
 
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
+
 
 import com.example.demo.model.CustomPasswordEncoder;
 import com.example.demo.model.Person;
@@ -33,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @RestController
 @RequestMapping("/forgotpassword")
 public class MyController {
@@ -48,6 +40,9 @@ public class MyController {
 	@Autowired
 	private ObjectMapper mapper;
 	String otp;
+	String status="status";
+	String fal="false";
+	String tru="true";
 	@CrossOrigin(origins= "*")
 
 	@PostMapping("/uic")
@@ -63,14 +58,14 @@ public class MyController {
 		if(fgps.findByEmail(p1))
 		{
 			logger.info("email successfully authenticated......");
-			jsonObject.put("status", "true");
+			jsonObject.put(status ,tru);
 			
 		}
 		else
 		{
 			
 			logger.warn("Unregistered email......");
-			jsonObject.put("status", "false");
+			jsonObject.put(status, fal);
 		}
 		String str=jsonObject.toString();
 		
@@ -93,16 +88,16 @@ public class MyController {
 	if(p.getOtp().equals(otp))
 	{
 		logger.info("Entered OTP is valid......");
-		jsonObject.put("status", "true");
+		jsonObject.put(status, tru);
 	}
 	else
 	{
 		logger.warn("Invalid OTP......");
-		jsonObject.put("status", "false");
+		jsonObject.put(status, fal);
 	}
-	String str=jsonObject.toString();
 	logger.debug("returning the json object to react.....");
-	return str;
+	return jsonObject.toString();
+	
 	}
 	
 
@@ -111,7 +106,7 @@ public class MyController {
 	@PostMapping("/mts")
 	public String  methodToSet( @RequestBody Person p) {
 		
-	String email=p.getEmail();
+	email=p.getEmail();
 	logger.debug("retrieving email......");
 	ObjectNode jsonObject = mapper.createObjectNode();
 	logger.debug("jsonObject initialised......");
@@ -151,9 +146,10 @@ public class MyController {
     
 	        
 	}
-   String str=jsonObject.toString();
    logger.debug("returning the json object to react.....");
-	return str;
+   return jsonObject.toString();
+   
+	
 
 	}
 	
@@ -168,27 +164,28 @@ public class MyController {
 	    if(securityQuestionsCheck(p))
 	    {
 	    	logger.info("Entered answers are correct......");
-	    	  jsonObject.put("status", "true");
+	    	  jsonObject.put(status, tru);
 	    	 
 	    }
 		
 		else
 		{
 			logger.warn("Entered answers are Incorrect......");
-			 jsonObject.put("status", "false");
+			 jsonObject.put(status, fal);
 		      
 	    	  
 		}
-	    String str=jsonObject.toString();
 	    logger.debug("returning the json object to react.....");
-		return str;
+
+	  return jsonObject.toString();
+		
 		}
 		
 	
 	private boolean securityQuestionsCheck(Person p) {
-		// TODO Auto-generated method stub
+		
 		 logger.debug("inside  securityQuestionsCheck......");
-	String email=p.getEmail();
+         email=p.getEmail();
 	 logger.debug("retrieving email......");
 
 	 logger.debug("retrieving the answers given by the user......");
@@ -200,18 +197,19 @@ public class MyController {
 		  String[] q=al.split(",");
 		  logger.debug("Answers given by the users retrieved......");
 		   
-		
+		boolean st=false;
 	if(q[0].equals(p.getAns1())&&q[1].equals(p.getAns2()))
 	{
 		logger.debug("succesfully validated the answers and sending back to called method......");
 
-		return true;
+		st=true;
 	}
 	else {
 		logger.debug("succesfully validated the answers and sending back to called method......");
 
-		return false;
+		
 	}
+	return st;
 	}
 	
 	@CrossOrigin(origins= "*")
@@ -233,18 +231,19 @@ public class MyController {
 		if(fgps.setPassword(hashedPassword,salt,email))
 		{
 			logger.info(" password succesfully set.....");
-			jsonObject.put("status", "true");
+			jsonObject.put(status, tru);
 		}
 		else
 		{
 			logger.info(" password is not set succesfully.....");
 		
-	    	  jsonObject.put("status", "false");
+	    	  jsonObject.put(status, fal);
 		}
-	    	  String str=jsonObject.toString();
-	  		logger.debug("returning the json object to react.....");
+		logger.debug("returning the json object to react.....");
+	    	 return jsonObject.toString();
+	  		
 
-	  		return str;
+	  		
 	      
 	    }
 }

@@ -1,15 +1,11 @@
 package com.example.demo.model;
 
-import java.math.BigInteger;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -24,13 +20,13 @@ public class SecurityAns {
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	@Column(name = "sec_id")
-	private long sec_id;
+	private long secId;
 	@Column(name = "security_ansid1")
-	private String security_ansid1;
+	private String securityAnsid1;
 	@Column(name = "security_ansid2")
-	private String security_ansid2;
+	private String securityAnsid2;
 	@Column(name = "security_queid1")
-private long security_queid1;
+private long securityQueid1;
 	@Column(name = "security_queid2")
-private long security_queid2 ;
+private long securityQueid2 ;
  }

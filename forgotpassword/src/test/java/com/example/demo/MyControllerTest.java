@@ -20,6 +20,7 @@ import com.example.demo.model.Person;
   
 
 public class MyControllerTest extends AbstractTestClass { 
+	String email="shaikneha823@gmail.com";
      @Override 
        @Before 
        public void setUp() { 
@@ -33,7 +34,7 @@ public class MyControllerTest extends AbstractTestClass {
 
          Person person=new Person(); 
 
-          person.setEmail("shaikneha823@gmail.com"); 
+          person.setEmail(email); 
 
           String inputJson = super.mapToJson(person); 
 
@@ -66,7 +67,7 @@ public class MyControllerTest extends AbstractTestClass {
         String uri = "/forgotpassword/mts"; 
 
          Person person=new Person(); 
-          person.setEmail("shaikneha823@gmail.com");
+          person.setEmail(email);
           person.setChoice("3"); 
 
           String inputJson = super.mapToJson(person); 
@@ -98,10 +99,10 @@ public class MyControllerTest extends AbstractTestClass {
         String uri = "/forgotpassword/sec"; 
 
          Person person=new Person(); 
-         person.setEmail("shaikneha823@gmail.com");
-          person.setAns2("rcb"); 
+         person.setEmail(email);
+          person.setAns2("pink"); 
 
-          person.setAns1("pink"); 
+          person.setAns1("rcb"); 
 
           String inputJson = super.mapToJson(person); 
 
