@@ -87,7 +87,7 @@ public class MyControllerTest extends AbstractTestClass {
 
           
 
-          assertEquals(content,"{\"question1\":\"who is fav actor\",\"question2\":\"who is ur inspiration\"}"); 
+          assertEquals(content,"{\"question1\":\"What is your favorite team?\",\"question2\":\"What is your favorite movie?\"}"); 
 
        } 
 
@@ -99,9 +99,9 @@ public class MyControllerTest extends AbstractTestClass {
 
          Person person=new Person(); 
          person.setEmail("shaikneha823@gmail.com");
-          person.setAns1("mahesh"); 
+          person.setAns2("rcb"); 
 
-          person.setAns2("abdulkalam"); 
+          person.setAns1("pink"); 
 
           String inputJson = super.mapToJson(person); 
 
